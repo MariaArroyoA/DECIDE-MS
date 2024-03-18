@@ -140,11 +140,12 @@ for (i in seq_along(SMD_1_indices)) {
 figA_data = combined_datasets[[4127]]
 
 ReplicateAverages <- figA_data %>% group_by(group_id, center) %>% summarise(values=mean(values))
+group_id_numeric <- c("Control" = 1, "Treated" = 2) 
 
 figA_plot =
 ggplot(figA_data, aes(x=group_id,y=values,color=factor(center))) + 
   geom_beeswarm(cex=3, alpha = 0.5) + 
-  geom_beeswarm(data=ReplicateAverages, size=5) + 
+  geom_segment(data = ReplicateAverages, aes(x = group_id_numeric[group_id]-0.2, xend = group_id_numeric[group_id] + 0.2, y = values, yend = values, color = center)) +
   scale_color_viridis(discrete = T) +
   theme_classic() + 
   theme(legend.title = element_blank(), axis.title.x = element_blank()) + 
