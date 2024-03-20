@@ -145,7 +145,8 @@ group_id_numeric <- c("Control" = 1, "Treated" = 2)
 figA_plot =
 ggplot(figA_data, aes(x=group_id,y=values,color=factor(center))) + 
   geom_beeswarm(cex=3, alpha = 0.5) + 
-  geom_segment(data = ReplicateAverages, aes(x = group_id_numeric[group_id]-0.2, xend = group_id_numeric[group_id] + 0.2, y = values, yend = values, color = center)) +
+  geom_segment(data = ReplicateAverages, aes(x = group_id_numeric[group_id]-0.2, xend = group_id_numeric[group_id] + 0.2, y = values, yend = values, color = center),
+               linewidth = 1) +
   scale_color_viridis(discrete = T) +
   theme_classic() + 
   theme(legend.title = element_blank(), axis.title.x = element_blank()) + 
@@ -159,11 +160,13 @@ ggplot(figA_data, aes(x=group_id,y=values,color=factor(center))) +
 figB_data = combined_datasets[[1082]]
 
 ReplicateAverages <- figB_data %>% group_by(group_id, center) %>% summarise(values=mean(values))
+group_id_numeric <- c("Control" = 1, "Treated" = 2) 
 
 figB_plot =
   ggplot(figB_data, aes(x=group_id,y=values,color=factor(center))) + 
   geom_beeswarm(cex=3, alpha = 0.5) + 
-  geom_beeswarm(data=ReplicateAverages, size=5) + 
+  geom_segment(data = ReplicateAverages, aes(x = group_id_numeric[group_id]-0.2, xend = group_id_numeric[group_id] + 0.2, y = values, yend = values, color = center),
+               linewidth = 1) +
   scale_color_viridis(discrete = T) +
   theme_classic() + 
   theme(legend.title = element_blank(), axis.title.x = element_blank()) + 
@@ -177,11 +180,13 @@ figB_plot =
 figC_data = combined_datasets[[736]]
 
 ReplicateAverages <- figC_data %>% group_by(group_id, center) %>% summarise(values=mean(values))
+group_id_numeric <- c("Control" = 1, "Treated" = 2) 
 
 figC_plot =
   ggplot(figC_data, aes(x=group_id,y=values,color=factor(center))) + 
   geom_beeswarm(cex=3, alpha = 0.5) + 
-  geom_beeswarm(data=ReplicateAverages, size=5) + 
+  geom_segment(data = ReplicateAverages, aes(x = group_id_numeric[group_id]-0.2, xend = group_id_numeric[group_id] + 0.2, y = values, yend = values, color = center),
+               linewidth = 1) +
   scale_color_viridis(discrete = T) +
   theme_classic() + 
   theme(legend.title = element_blank(), axis.title.x = element_blank()) + 
@@ -197,11 +202,13 @@ figC_plot =
 figD_data = combined_datasets[[4170]]
 
 ReplicateAverages <- figD_data %>% group_by(group_id, center) %>% summarise(values=mean(values))
+group_id_numeric <- c("Control" = 1, "Treated" = 2) 
 
 figD_plot =
   ggplot(figD_data, aes(x=group_id,y=values,color=factor(center))) + 
   geom_beeswarm(cex=3, alpha = 0.5) + 
-  geom_beeswarm(data=ReplicateAverages, size=5) + 
+  geom_segment(data = ReplicateAverages, aes(x = group_id_numeric[group_id]-0.2, xend = group_id_numeric[group_id] + 0.2, y = values, yend = values, color = center),
+               linewidth = 1) +
   scale_color_viridis(discrete = T) +
   theme_classic() + 
   theme(legend.title = element_blank(), axis.title.x = element_blank()) + 
@@ -215,3 +222,92 @@ figD_plot =
 
 ggpubr::ggarrange(figA_plot, figB_plot, figC_plot, figD_plot, labels = "AUTO")
 ggsave("fig-2.png", units = "cm", width = 20, height = 15)
+
+
+## updated datasets
+# all centers have effects in the same direction
+figA_data_n = combined_datasets[[4167]]
+
+ReplicateAverages <- figA_data_n %>% group_by(group_id, center) %>% summarise(values=mean(values))
+group_id_numeric <- c("Control" = 1, "Treated" = 2) 
+
+figA_plot_n =
+  ggplot(figA_data_n, aes(x=group_id,y=values,color=factor(center))) + 
+  geom_beeswarm(cex=3, alpha = 0.5) + 
+  geom_segment(data = ReplicateAverages, aes(x = group_id_numeric[group_id]-0.2, xend = group_id_numeric[group_id] + 0.2, y = values, yend = values, color = center),
+               linewidth = 1) +
+  scale_color_viridis(discrete = T) +
+  theme_classic() + 
+  theme(legend.title = element_blank(), axis.title.x = element_blank()) + 
+  scale_y_continuous(name = "outcome value", limits = c(0,18)) +
+  labs(title = paste("Overall SMD =", round(simulated_ES[[4167]][4,6], 1)), 
+       subtitle = paste("Center1 =", round(simulated_ES[[4167]][1,6], 1), 
+                        "| Center2 =", round(simulated_ES[[4167]][2,6], 1),
+                        "| Center3 =", round(simulated_ES[[4167]][3,6], 1)))
+
+# 2 centers show almost no effect, 1 center has big effect
+figB_data_n = combined_datasets[[1103]]
+
+ReplicateAverages <- figB_data_n %>% group_by(group_id, center) %>% summarise(values=mean(values))
+group_id_numeric <- c("Control" = 1, "Treated" = 2) 
+
+figB_plot_n =
+  ggplot(figB_data_n, aes(x=group_id,y=values,color=factor(center))) + 
+  geom_beeswarm(cex=3, alpha = 0.5) + 
+  geom_segment(data = ReplicateAverages, aes(x = group_id_numeric[group_id]-0.2, xend = group_id_numeric[group_id] + 0.2, y = values, yend = values, color = center),
+               linewidth = 1) +
+  scale_color_viridis(discrete = T) +
+  theme_classic() + 
+  theme(legend.title = element_blank(), axis.title.x = element_blank()) + 
+  scale_y_continuous(name = "outcome value", limits = c(0,18)) +
+  labs(title = paste("Overall SMD =", round(simulated_ES[[1103]][4,6], 1)), 
+       subtitle = paste("Center1 =", round(simulated_ES[[1103]][1,6], 1), 
+                        "| Center2 =", round(simulated_ES[[1103]][2,6], 1),
+                        "| Center3 =", round(simulated_ES[[1103]][3,6], 1)))
+
+# 2 centers have effect in one direction, 1 center in the opposite
+figC_data_n = combined_datasets[[296]]
+
+ReplicateAverages <- figC_data_n %>% group_by(group_id, center) %>% summarise(values=mean(values))
+group_id_numeric <- c("Control" = 1, "Treated" = 2) 
+
+figC_plot_n =
+  ggplot(figC_data_n, aes(x=group_id,y=values,color=factor(center))) + 
+  geom_beeswarm(cex=3, alpha = 0.5) + 
+  geom_segment(data = ReplicateAverages, aes(x = group_id_numeric[group_id]-0.2, xend = group_id_numeric[group_id] + 0.2, y = values, yend = values, color = center),
+               linewidth = 1) +
+  scale_color_viridis(discrete = T) +
+  theme_classic() + 
+  theme(legend.title = element_blank(), axis.title.x = element_blank()) + 
+  scale_y_continuous(name = "outcome value", limits = c(0,18)) +
+  labs(title = paste("Overall SMD =", round(simulated_ES[[296]][4,6], 1)), 
+       subtitle = paste("Center1 =", round(simulated_ES[[296]][1,6], 1), 
+                        "| Center2 =", round(simulated_ES[[296]][2,6], 1),
+                        "| Center3 =", round(simulated_ES[[296]][3,6], 1)))
+
+
+# 2 center with similar effects, 1 center with no effect
+
+figD_data_n = combined_datasets[[3707]]
+
+ReplicateAverages <- figD_data_n %>% group_by(group_id, center) %>% summarise(values=mean(values))
+group_id_numeric <- c("Control" = 1, "Treated" = 2) 
+
+figD_plot_n =
+  ggplot(figD_data_n, aes(x=group_id,y=values,color=factor(center))) + 
+  geom_beeswarm(cex=3, alpha = 0.5) + 
+  geom_segment(data = ReplicateAverages, aes(x = group_id_numeric[group_id]-0.2, xend = group_id_numeric[group_id] + 0.2, y = values, yend = values, color = center),
+               linewidth = 1) +
+  scale_color_viridis(discrete = T) +
+  theme_classic() + 
+  theme(legend.title = element_blank(), axis.title.x = element_blank()) + 
+  scale_y_continuous(name = "outcome value", limits = c(0,18)) +
+  labs(title = paste("Overall SMD =", round(simulated_ES[[3707]][4,6], 1)), 
+       subtitle = paste("Center1 =", round(simulated_ES[[3707]][1,6], 1), 
+                        "| Center2 =", round(simulated_ES[[3707]][2,6], 1),
+                        "| Center3 =", round(simulated_ES[[3707]][3,6], 1)))
+
+## combining all figure
+
+ggpubr::ggarrange(figA_plot_n, figB_plot_n, figC_plot_n, figD_plot_n, labels = "AUTO")
+ggsave("fig-2_n.png", units = "cm", width = 20, height = 15)
