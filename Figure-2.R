@@ -236,7 +236,7 @@ figA_plot_n =
   geom_beeswarm(cex=3, alpha = 0.5) + 
   geom_segment(data = ReplicateAverages, aes(x = group_id_numeric[group_id]-0.2, xend = group_id_numeric[group_id] + 0.2, y = values, yend = values, color = center),
                linewidth = 1) +
-  scale_color_viridis(discrete = T) +
+  scale_color_manual(values = c("#440154", "#21918c", "#edc12f")) +
   theme_classic() + 
   theme(legend.title = element_blank(), axis.title.x = element_blank()) + 
   scale_y_continuous(name = "outcome value", limits = c(0,18)) +
@@ -256,7 +256,7 @@ figB_plot_n =
   geom_beeswarm(cex=3, alpha = 0.5) + 
   geom_segment(data = ReplicateAverages, aes(x = group_id_numeric[group_id]-0.2, xend = group_id_numeric[group_id] + 0.2, y = values, yend = values, color = center),
                linewidth = 1) +
-  scale_color_viridis(discrete = T) +
+  scale_color_manual(values = c("#440154", "#21918c", "#edc12f")) +
   theme_classic() + 
   theme(legend.title = element_blank(), axis.title.x = element_blank()) + 
   scale_y_continuous(name = "outcome value", limits = c(0,18)) +
@@ -276,7 +276,7 @@ figC_plot_n =
   geom_beeswarm(cex=3, alpha = 0.5) + 
   geom_segment(data = ReplicateAverages, aes(x = group_id_numeric[group_id]-0.2, xend = group_id_numeric[group_id] + 0.2, y = values, yend = values, color = center),
                linewidth = 1) +
-  scale_color_viridis(discrete = T) +
+  scale_color_manual(values = c("#440154", "#21918c", "#edc12f")) +
   theme_classic() + 
   theme(legend.title = element_blank(), axis.title.x = element_blank()) + 
   scale_y_continuous(name = "outcome value", limits = c(0,18)) +
@@ -298,7 +298,7 @@ figD_plot_n =
   geom_beeswarm(cex=3, alpha = 0.5) + 
   geom_segment(data = ReplicateAverages, aes(x = group_id_numeric[group_id]-0.2, xend = group_id_numeric[group_id] + 0.2, y = values, yend = values, color = center),
                linewidth = 1) +
-  scale_color_viridis(discrete = T) +
+  scale_color_manual(values = c("#440154", "#21918c", "#edc12f")) +
   theme_classic() + 
   theme(legend.title = element_blank(), axis.title.x = element_blank()) + 
   scale_y_continuous(name = "outcome value", limits = c(0,18)) +
